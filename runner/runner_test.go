@@ -67,5 +67,17 @@ var _ = Describe("Runner", func() {
 
 			Expect(output).To(Equal(expectedOutput))
 		})
+
+		Context("the command returns an error", func() {
+			BeforeEach(func() {
+				cmdRunner = runner.Runner{
+					Path: "zak-rules.exe",
+				}
+			})
+
+			It("returns the error", func() {
+				Expect(cmdRunner.Run()).NotTo(Succeed())
+			})
+		})
 	})
 })

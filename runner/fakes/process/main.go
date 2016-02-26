@@ -21,8 +21,8 @@ func (ss *stringSlice) Set(value string) error {
 }
 
 type outputData struct {
+	Path string
 	Args []string
-	PID  int
 }
 
 func main() {
@@ -30,7 +30,7 @@ func main() {
 	signal.Ignore()
 
 	var data outputData
-	data.PID = os.Getpid()
+	data.Path = os.Args[0]
 	data.Args = os.Args[1:]
 
 	// validate command line arguments
